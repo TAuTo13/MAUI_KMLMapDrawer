@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             xmlns:items="clr-namespace:MauiKMLMap2.Items"
+             xmlns:enum="clr-namespace:MauiKMLMap2.Extentions"
+             x:Class="MauiKMLMap2.MainPage"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Picker x:Name="KMLPicker"
+                    ItemsSource="{enum:EnumBindingSource {x:Type items:KML_Items}}"
+                    SelectedIndex="0"
+                    GridLayout.Row="0"/>
+        <Button x:Name="DrawButton"
+                    Text="Draw"
+                    Pressed="OnDrawButtonPressed"
+                    GridLayout.Row="1"/>
+        <Label x:Name="DownloadTimeCountLabel"
+                   Text="DownloadTime:"
+                   GridLayout.Row="2"/>
+        <Label x:Name="LoadTimeCountLabel"
+                   Text="LoadTime:"
+                   GridLayout.Row="3"/>
+        <Label x:Name="DrawTimeCountLabel"
+                   Text="DrawTime:"
+                   GridLayout.Row="4"/>
+        <Skia:SKCanvasView x:Name="SkiaView"
+                               PaintSurface="OnSKCanvasPaint"
+                               GridLayout.Row="5"/>
+    </Grid>
+</ContentPage>
